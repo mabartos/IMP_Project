@@ -9,7 +9,7 @@ const MyButton = ({ onPress, title, color }) => {
     const onClick = () => {
         isActive ? setButtonColor('transparent') : setButtonColor(color);
         setActive(!isActive);
-        onPress();
+        onPress(isActive);        
     }
 
     const ButtonStyle = StyleSheet.create({

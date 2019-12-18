@@ -43,6 +43,24 @@ void decreaseFading(uint8_t device){
   }
 }
 
+void fadingIteration(uint8_t device, uint16_t countOfIterations){
+  digitalWrite(device,LOW);
+  for(uint16_t i=0;i<countOfIterations;i++){
+    increaseFading(device);
+    delay(100);
+    decreaseFading(device);
+    delay(100);
+  }
+}
+
+void blickingIteration(uint8_t device, uint16_t countOfIterations){
+  if(!digitalRead(device)){
+    for(uint16_t i=0;i<countOfIterations;i++){
+      blickLED(device,DEFAULT_DELAY);
+    }
+  }
+}
+
 // Intensity in Procent
 void changeRGBColors(uint16_t redIntensity,uint16_t greenIntensity,uint16_t blueIntensity){
   changeIntensity(RED_LED,redIntensity);

@@ -13,15 +13,14 @@ void setUpServer();
 void handleRoot();
 void handleNotFound();
 
+void handleBlicking();
+void handleFading();
+
 void handleGeneral(char *name,uint16_t pin);
+void handleGeneralState(uint16_t pin);
 
 void handleRed();
-void handleRedIntensity();
-
 void handleGreen();
-void handleGreenIntensity();
-
 void handleBlue();
-void handleBlueIntensity();
 
 #endif //BARTOS_SERVER

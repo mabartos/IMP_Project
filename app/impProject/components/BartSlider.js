@@ -1,17 +1,17 @@
 import React from 'react';
-import { StyleSheet, View ,Text} from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 
 import { Slider } from 'react-native-elements';
 
-const BartSlider = (color) => {
-    const [sliderValue,setSliderValue]=React.useState(50);
+const BartSlider = ({onChange}) => {
+    const [sliderValue, setSliderValue] = React.useState(50);
 
     const style = StyleSheet.create({
         root: {
             alignItems: "center",
             justifyContent: "center",
             flex: 1,
-            padding:3
+            padding: 3
         },
         slider: {
             height: "90%",
@@ -22,6 +22,11 @@ const BartSlider = (color) => {
         value: sliderValue,
     });
 
+    const valueChanged = (value) => {
+        setSliderValue(value);
+        onChange(value);
+    }
+
     return (
         <View style={style.root}>
             <Text>{style.value} %</Text>
@@ -31,7 +36,7 @@ const BartSlider = (color) => {
                 step={style.step}
                 orientation="vertical"
                 value={style.value}
-                onValueChange={setSliderValue}
+                onValueChange={valueChanged}
             />
         </View>
     );
