@@ -16,6 +16,12 @@ const BartSlider = ({onChange}) => {
         slider: {
             height: "90%",
         },
+        text:{
+            textAlign: "center",
+            color: "#0075A2",
+            fontWeight:"bold",
+            fontSize: 20,
+        },
         minimumValue: 0,
         maximumValue: 100,
         step: 1,
@@ -29,7 +35,7 @@ const BartSlider = ({onChange}) => {
 
     return (
         <View style={style.root}>
-            <Text>{style.value} %</Text>
+            <Text style={style.text}>{style.value} %</Text>
             <Slider style={style.slider}
                 maximumValue={style.maximumValue}
                 minimumValue={style.minimumValue}
@@ -37,6 +43,7 @@ const BartSlider = ({onChange}) => {
                 orientation="vertical"
                 value={style.value}
                 onValueChange={valueChanged}
+                thumbStyle={{backgroundColor:"black",width:60,height:30}}
             />
         </View>
     );

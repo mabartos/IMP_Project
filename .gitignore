@@ -1,4 +1,7 @@
 .pio
 .travis.yml
 .vscode/
+app/impProject/android
+app/impProject/ios
+
 

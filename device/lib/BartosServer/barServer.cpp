@@ -85,14 +85,16 @@ void handleGeneral(char *message,uint16_t pin){
   if(server.args()>0 && server.arg("state")=="on"){
     if(isBlicking){
       blickingIteration(pin,COUNT_OF_ITERATIONS);
+      server.send(200,"text/plain",message);
+      return;
     }else if(isFading){
       fadingIteration(pin,1);
-    server.send(200,"text/plain",message);
-    return;
+      server.send(200,"text/plain",message);
+      return;
+    }
   }
-  handleGeneralState(pin);
-  server.send(200,"text/plain",message);
-}
+    handleGeneralState(pin);
+    server.send(200,"text/plain",message);
 }
 
 void handleGeneralIntensity(char *message,uint16_t pin){
