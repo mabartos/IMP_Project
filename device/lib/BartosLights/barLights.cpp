@@ -1,3 +1,7 @@
+/**
+ *  Martin Bartos (xbarto96)
+ *  Original (Last modified : 21.12.2019)
+ */
 
 #include "barLights.h"
 
@@ -68,13 +72,70 @@ void changeRGBColors(uint16_t redIntensity,uint16_t greenIntensity,uint16_t blue
   changeIntensity(BLUE_LED,blueIntensity);
 }
 
-void simpleSequence(){
-  blickLED(RED_LED,500);
-  blickLED(GREEN_LED,500);
-  blickLED(BLUE_LED,500);
-
+void sequence1(){
   increaseFading(RED_LED);
-  delay(500);
+  increaseFading(BLUE_LED);
+  increaseFading(GREEN_LED);
+  
+  delay(400);
+
   decreaseFading(RED_LED);
-  delay(500);
+  decreaseFading(BLUE_LED);
+  decreaseFading(GREEN_LED);
+}
+
+void sequence2(){
+  uint16_t seq2delay=500;
+  blickLED(BLUE_LED,seq2delay);
+  blickLED(RED_LED,seq2delay);
+  blickLED(GREEN_LED,seq2delay);
+
+  decreaseFading(BLUE_LED);
+  decreaseFading(RED_LED);
+  decreaseFading(GREEN_LED);
+
+  increaseFadingToValue(BLUE_LED,20);
+  increaseFadingToValue(RED_LED,20);
+  increaseFadingToValue(GREEN_LED,20);
+
+  delay(seq2delay);
+
+  digitalWrite(BLUE_LED,LOW);
+  digitalWrite(RED_LED,LOW);
+  digitalWrite(GREEN_LED,LOW);
+}
+
+void sequence3(){
+  uint16_t seq3delay=500;
+
+  blickLED(RED_LED,seq3delay);
+  blickLED(GREEN_LED,seq3delay);
+  blickLED(BLUE_LED,seq3delay);
+
+  increaseFadingToValue(GREEN_LED,60);
+  increaseFadingToValue(BLUE_LED,60);
+  delay(seq3delay);
+
+  decreaseFading(GREEN_LED);
+  decreaseFading(BLUE_LED);
+}
+
+void increaseFadingToValue(uint8_t device,uint8_t value){
+  if(value>0 && value<=100){
+    uint16_t resultValue=(value*PWM_RANGE)/100;
+    for(uint16_t i=0;i<resultValue;i++){
+      analogWrite(device,i);
+      delay(2);
+    }
+  }
+}
+
+void decreaseFadingToValue(uint8_t device,uint8_t value){
+  if(value>0 && value<=100){
+    uint16_t resultValue=(value*PWM_RANGE)/100;
+    for(uint16_t i=PWM_RANGE;i>=resultValue;i--){
+      analogWrite(device,i);
+      delay(2);
+    }
+  }
 }

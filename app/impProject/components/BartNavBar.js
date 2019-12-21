@@ -1,30 +1,37 @@
+/**
+ *  Martin Bartos (xbarto96)
+ *  Custom Navigation Bar
+ *  Original (Last modified : 21.12.2019)
+ */
+
 import React from 'react';
-import { Text, View,StyleSheet} from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 
-const BartNavBar = () => {
+const BartNavBar = (title) => {
 
-    const Style=StyleSheet.create({
-        root:{
-            flex:1,
-            flexDirection:"row",
-            backgroundColor:"#0075A2",
-            width:"100%",
+    // CSS Style
+    const Style = StyleSheet.create({
+        root: {
+            flex: 1,
+            flexDirection: "row",
+            backgroundColor: "#0075A2",
+            width: "100%",
             alignItems: "center",
             justifyContent: "flex-start",
-            paddingLeft:10
+            paddingLeft: 10
         },
-        text:{
+        text: {
             alignItems: "flex-start",
-             justifyContent: "flex-start" ,
-             color:"white",
-             fontSize:20
+            justifyContent: "flex-start",
+            color: "white",
+            fontSize: 20
         }
     });
 
     return (
         <View style={Style.root}>
             <Text style={Style.text}>
-                Bartos LED Controller
+                {title}
         </Text>
         </View>
     );

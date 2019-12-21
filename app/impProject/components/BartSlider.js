@@ -1,11 +1,17 @@
+/**
+ *  Martin Bartos (xbarto96)
+ *  Custom Slider for editing light intensity
+ *  Original (Last modified : 21.12.2019)
+ */
+
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-
 import { Slider } from 'react-native-elements';
 
-const BartSlider = ({onChange}) => {
+const BartSlider = ({ onChange }) => {
     const [sliderValue, setSliderValue] = React.useState(50);
 
+    // CSS Style
     const style = StyleSheet.create({
         root: {
             alignItems: "center",
@@ -16,10 +22,10 @@ const BartSlider = ({onChange}) => {
         slider: {
             height: "90%",
         },
-        text:{
+        text: {
             textAlign: "center",
             color: "#0075A2",
-            fontWeight:"bold",
+            fontWeight: "bold",
             fontSize: 20,
         },
         minimumValue: 0,
@@ -27,7 +33,7 @@ const BartSlider = ({onChange}) => {
         step: 1,
         value: sliderValue,
     });
-
+    
     const valueChanged = (value) => {
         setSliderValue(value);
         onChange(value);
@@ -43,7 +49,7 @@ const BartSlider = ({onChange}) => {
                 orientation="vertical"
                 value={style.value}
                 onValueChange={valueChanged}
-                thumbStyle={{backgroundColor:"black",width:60,height:30}}
+                thumbStyle={{ backgroundColor: "black", width: 60, height: 30 }}
             />
         </View>
     );

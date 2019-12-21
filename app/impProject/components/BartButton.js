@@ -1,11 +1,18 @@
+/**
+ *  Martin Bartos (xbarto96)
+ *  Custom Button
+ *  Original (Last modified : 21.12.2019)
+ */
+
 import React from 'react';
 import { Text, TouchableOpacity, StyleSheet, View } from 'react-native';
 
 const BartButton = ({ onPress, title, color, sequence, isLight, constantColor }) => {
-    const defaultColor = constantColor ? constantColor : "#A39A92";
+    const defaultColor = constantColor ? constantColor : "#dddddd";
     const [isActive, setActive] = React.useState(false);
     const [buttonColor, setButtonColor] = React.useState(defaultColor);
 
+    // Event onClick, which determines the activation of specific buttons.
     const onClick = () => {
         if (isActive || !sequence || isLight) {
             isActive ? setButtonColor(defaultColor) : (!sequence) ? setButtonColor(color) : setButtonColor(defaultColor);
@@ -17,6 +24,7 @@ const BartButton = ({ onPress, title, color, sequence, isLight, constantColor })
         }
     }
 
+    // CSS Style
     const ButtonStyle = StyleSheet.create({
         root: {
             alignItems: "center",
@@ -50,8 +58,6 @@ const BartButton = ({ onPress, title, color, sequence, isLight, constantColor })
             <View style={ButtonStyle.underline} />
         </TouchableOpacity>
     );
-
-
 }
 
 export default BartButton
